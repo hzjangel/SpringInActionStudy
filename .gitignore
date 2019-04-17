@@ -1,0 +1,5 @@
+# 依赖文件夹
+/node_modules
+
+# idea的配置文件夹
+/.idea
