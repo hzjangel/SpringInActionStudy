@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/SpringInActionStudy/',
     title: 'Spring学习',
     description: 'jQuery学习笔记',
     head: [
