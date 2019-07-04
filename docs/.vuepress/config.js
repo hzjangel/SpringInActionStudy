@@ -1,7 +1,7 @@
 module.exports = {
     base: '/SpringInActionStudy/',
     title: 'Spring学习',
-    description: 'jQuery学习笔记',
+    description: 'Spring In Action学习笔记',
     head: [
         ['link', { rel: 'icon', href: `/logo.png` }],
     ],
@@ -39,11 +39,31 @@ module.exports = {
 
             },
             {
+                title: '注解开发',
+                collapsable: false,
+                children: [
+                    'annotation/',
+                    'annotation/filtersRule',
+                    'annotation/scope',
+                    'annotation/lazyBean',
+                    'annotation/conditional'
+                ]
+            },
+            {
                 title: '第五章 构建Spring Web应用程序',
                 collapsable: false,
                 children: [
                     ['chapter_05/', 'introduction'],
-                    'chapter_05/Spring Mvc起步.md'
+                    'chapter_05/SpringMvc',
+                    'chapter_05/qibu'
+
+                ]
+            },
+            {
+                title: 'SpringBoot',
+                collapsable: false,
+                children: [
+                    'SpringBoot/i18n'
                 ]
             }
         ]
