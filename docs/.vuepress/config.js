@@ -65,6 +65,13 @@ module.exports = {
                 children: [
                     'SpringBoot/i18n'
                 ]
+            },
+            {
+                title:"项目管理工具",
+                collapsable: false,
+                children: [
+                    'projectManagerTools/maven'
+                ]
             }
         ]
     }
