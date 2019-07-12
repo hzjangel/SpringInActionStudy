@@ -1,7 +1,7 @@
 module.exports = {
     base: '/SpringInActionStudy/',
-    title: 'Spring学习',
-    description: 'Spring In Action学习笔记',
+    title: 'Spring学习笔记',
+    description: '千里之行，始于足下，不积跬步，无以至千里',
     head: [
         ['link', { rel: 'icon', href: `/logo.png` }],
     ],
@@ -10,6 +10,21 @@ module.exports = {
         // lineNumbers: true
     },
     themeConfig: {
+        nav:[
+          { text: 'java学习笔记', link: 'https://hzjanger.github.io/SpringInActionStudy/'}, // 内部链接 以docs为根目录
+          // { text: '博客', link: 'http://obkoro1.com/' }, // 外部链接
+          // 下拉列表
+          {
+            text: 'GitHub',
+            items: [
+              { text: 'GitHub地址', link: 'https://github.com/hzjanger' },
+              {
+                text: 'Angular笔记地址',
+                link: 'https://github.com/hzjanger/AngularStudy'
+              }
+            ]
+          }        
+        ],
         // 将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 "Edit this page" 链接
         //假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: 'hzjanger/SpringInActionStudy',
@@ -23,35 +38,29 @@ module.exports = {
         lastUpdated: '上次更新',
         sidebar: [
             {
-                title: 'Introduction',
-                collapsable: false,
-                children: [
-                    '/'
-                ]
-            },
-            {
                 title: '第一部分 Spring核心',
-                collapsable: false,
+                collapsable: true,
                 children: [
-                    ['chapter_01/', 'introduction'],
                     'chapter_01/one'
                 ]
 
             },
             {
                 title: '注解开发',
-                collapsable: false,
+                collapsable: true,
                 children: [
                     'annotation/',
                     'annotation/filtersRule',
                     'annotation/scope',
                     'annotation/lazyBean',
-                    'annotation/conditional'
+                    'annotation/conditional',
+                    'annotation/import',
+                    'annotation/factoryBean'
                 ]
             },
             {
                 title: '第五章 构建Spring Web应用程序',
-                collapsable: false,
+                collapsable: true,
                 children: [
                     ['chapter_05/', 'introduction'],
                     'chapter_05/SpringMvc',
@@ -61,14 +70,14 @@ module.exports = {
             },
             {
                 title: 'SpringBoot',
-                collapsable: false,
+                collapsable: true,
                 children: [
                     'SpringBoot/i18n'
                 ]
             },
             {
                 title:"项目管理工具",
-                collapsable: false,
+                collapsable: true,
                 children: [
                     'projectManagerTools/maven'
                 ]
