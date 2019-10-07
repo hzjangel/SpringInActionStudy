@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@Autowired | Spring学习笔记</title>
+    <meta name="description" content="千里之行，始于足下，不积跬步，无以至千里">
+    <link rel="icon" href="/SpringInActionStudy/favicon.ico">
+    
+    <link rel="preload" href="/SpringInActionStudy/assets/css/0.styles.681a882c.css" as="style"><link rel="preload" href="/SpringInActionStudy/assets/js/app.c809567c.js" as="script"><link rel="preload" href="/SpringInActionStudy/assets/js/2.376d72c8.js" as="script"><link rel="preload" href="/SpringInActionStudy/assets/js/16.1e2a7fa9.js" as="script"><link rel="prefetch" href="/SpringInActionStudy/assets/js/10.d9cc5736.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/11.fbe7470f.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/12.6403ced6.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/13.62be46d0.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/14.b540c255.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/15.cef44054.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/17.635c6898.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/18.aec2dd00.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/19.300a4763.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/20.c6350fab.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/21.921fa50f.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/22.d6508711.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/23.432735d1.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/24.2bdbb9d9.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/25.f699d4d3.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/26.31a3cf10.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/27.227491c6.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/28.9e03878d.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/29.2bac3048.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/3.32e8e5bb.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/30.7c2a2b37.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/31.19cf5dfa.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/32.2354d42b.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/33.6fe351c4.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/34.e181ae3a.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/35.f7edbaf2.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/4.f70f9d20.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/5.ed450730.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/6.f662a30e.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/7.b2e96998.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/8.6a6f0cce.js"><link rel="prefetch" href="/SpringInActionStudy/assets/js/9.a4ed9f56.js">
+    <link rel="stylesheet" href="/SpringInActionStudy/assets/css/0.styles.681a882c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/SpringInActionStudy/" class="home-link router-link-active"><!----> <span class="site-name">Spring学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://hzjanger.github.io/SpringInActionStudy/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  java学习笔记
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">GitHub</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hzjanger" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub地址
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hzjanger/AngularStudy" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Angular笔记地址
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/hzjanger/SpringInActionStudy" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://hzjanger.github.io/SpringInActionStudy/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  java学习笔记
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">GitHub</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hzjanger" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub地址
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hzjanger/AngularStudy" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Angular笔记地址
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/hzjanger/SpringInActionStudy" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第一部分 Spring核心</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>注解的使用</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/SpringInActionStudy/annotation/" class="sidebar-link">注解配置</a></li><li><a href="/SpringInActionStudy/annotation/filtersRule.html" class="sidebar-link">过滤规则</a></li><li><a href="/SpringInActionStudy/annotation/scope.html" class="sidebar-link">Bean作用域</a></li><li><a href="/SpringInActionStudy/annotation/lazyBean.html" class="sidebar-link">Bean懒加载</a></li><li><a href="/SpringInActionStudy/annotation/conditional.html" class="sidebar-link">条件注册</a></li><li><a href="/SpringInActionStudy/annotation/import.html" class="sidebar-link">Import注解</a></li><li><a href="/SpringInActionStudy/annotation/factoryBean.html" class="sidebar-link">FactoryBean</a></li><li><a href="/SpringInActionStudy/annotation/BeanLifeCycle.html" class="sidebar-link">Bean的生命周期</a></li><li><a href="/SpringInActionStudy/annotation/Values.html" class="sidebar-link">@Value</a></li><li><a href="/SpringInActionStudy/annotation/autowired.html" class="active sidebar-link">@Autowired</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/SpringInActionStudy/annotation/autowired.html#使用规则" class="sidebar-link">使用规则</a></li><li class="sidebar-sub-header"><a href="/SpringInActionStudy/annotation/autowired.html#目录结构" class="sidebar-link">目录结构</a></li><li class="sidebar-sub-header"><a href="/SpringInActionStudy/annotation/autowired.html#代码实现" class="sidebar-link">代码实现</a></li><li class="sidebar-sub-header"><a href="/SpringInActionStudy/annotation/autowired.html#放置规则" class="sidebar-link">放置规则</a></li><li class="sidebar-sub-header"><a href="/SpringInActionStudy/annotation/autowired.html#与-bean配合使用" class="sidebar-link">与@Bean配合使用</a></li></ul></li><li><a href="/SpringInActionStudy/annotation/resource.html" class="sidebar-link">@Resource</a></li><li><a href="/SpringInActionStudy/annotation/AOP.html" class="sidebar-link">Spring AOP</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第五章 构建Spring Web应用程序</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>SpringBoot</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Spring集成</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>SpringBoot集成</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>mybatis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>项目管理工具</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="autowired"><a href="#autowired" aria-hidden="true" class="header-anchor">#</a> @Autowired</h1> <p><code>@Autowired</code>是自动装配，是Spring利用依赖注入(DI)，完成IOC容器中各个组件的依赖关系赋值</p> <h2 id="使用规则"><a href="#使用规则" aria-hidden="true" class="header-anchor">#</a> 使用规则</h2> <ol><li><p>默认按照类型去容器中找对应的组件，如果找到了就自动装配上去(只有一个这种类型组件的情况)</p></li> <li><p>如果存在多个相同类型的组件，那么就会按照属性的名称作为id去容器中查找</p></li> <li><p>如果存在多个相同类型的组件，那么就可以使用<code>@Qualifier</code>注解指定需要配置Bean的id名称</p></li> <li><p>如果存在多个相同类型的组件，可以通过<code>@Primary</code>设置Bean的优先级别</p></li> <li><p><code>@Autowired</code>默认是需要存在这个Bean的，如果不存在那么程序就会报错，可以通过设置<code>required</code>属性来确定这个Bean是否是必须要有的</p></li></ol> <h2 id="目录结构"><a href="#目录结构" aria-hidden="true" class="header-anchor">#</a> 目录结构</h2> <div class="language- extra-class"><pre class="language-text"><code>src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── hzj
+│   │           ├── config
+│   │           │   └── MainConfigOfAutowired.java
+│   │           └── service
+│   │               └── BookService.java
+│   └── resources
+└── test
+    └── java
+        └── com
+            └── hzj
+                └── test
+                    └── AutowiredTest.java
+
+</code></pre></div><h2 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h2> <ol><li>新建一个Bean配置类</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>dao</span><span class="token punctuation">.</span><span class="token class-name">BookDao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Bean</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">ComponentScan</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Configuration</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Primary</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;com.hzj.service&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;com.hzj.dao&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAutowired</span> <span class="token punctuation">{</span>
+
+
+    <span class="token comment">/**
+     * 通过@Primary设置Bean的优先级别
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Primary</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;bookDao2&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">BookDao</span> <span class="token function">bookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="2"><li>更爱<code>BookDao</code>的内容</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>dao</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Repository</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 使用@Repository产生的Bean名默认是类名的首字母小写bookDao
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookDao</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> leabe <span class="token operator">=</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">BookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLeabe</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> leabe<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">BookDao</span><span class="token punctuation">(</span><span class="token class-name">String</span> leabe<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>leabe <span class="token operator">=</span> leabe<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLeabe</span><span class="token punctuation">(</span><span class="token class-name">String</span> leabe<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>leabe <span class="token operator">=</span> leabe<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;BookDao{&quot;</span> <span class="token operator">+</span>
+                <span class="token string">&quot;leabe='&quot;</span> <span class="token operator">+</span> leabe <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><ol start="3"><li>更改<code>BookService</code>的内容</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>service</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>dao</span><span class="token punctuation">.</span><span class="token class-name">BookDao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Qualifier</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Service</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 使用@Service：默认是类名首字母小写bookService
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">//通过@Qualifier指定Bean的id名称</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">&quot;bookDao&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">//    @Autowired(required = false)</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token class-name">BookDao</span> bookDao<span class="token punctuation">;</span>
+
+
+    <span class="token keyword">public</span> <span class="token class-name">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">BookDao</span> <span class="token function">getBookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> bookDao<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setBookDao</span><span class="token punctuation">(</span><span class="token class-name">BookDao</span> bookDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>bookDao <span class="token operator">=</span> bookDao<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;BookService{&quot;</span> <span class="token operator">+</span>
+                <span class="token string">&quot;bookDao=&quot;</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="4"><li>编写一个测试类</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>test</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>config</span><span class="token punctuation">.</span><span class="token class-name">MainConfigOfAutowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>dao</span><span class="token punctuation">.</span><span class="token class-name">BookDao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>service</span><span class="token punctuation">.</span><span class="token class-name">BookService</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit</span><span class="token punctuation">.</span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AutowiredTest</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">AnnotationConfigApplicationContext</span> applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span><span class="token class-name">MainConfigOfAutowired</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//获取bookService</span>
+        <span class="token class-name">BookService</span> bookService <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token class-name">BookService</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bookService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//获取bookDao</span>
+        <span class="token class-name">BookDao</span> bookDao <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">BookDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">&quot;bookDao&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bookDao<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bookDao <span class="token operator">==</span> bookService<span class="token punctuation">.</span><span class="token function">getBookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">BookDao</span> bookDao2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">BookDao</span><span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">&quot;bookDao2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bookDao2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bookDao2 <span class="token operator">==</span> bookService<span class="token punctuation">.</span><span class="token function">getBookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="放置规则"><a href="#放置规则" aria-hidden="true" class="header-anchor">#</a> 放置规则</h2> <p><code>@Autowride</code>不仅可以放置在属性上，而且可以放置在<code>构造器</code>、<code>方法</code>和<code>参数</code>上</p> <h3 id="在构造器上使用"><a href="#在构造器上使用" aria-hidden="true" class="header-anchor">#</a> 在构造器上使用</h3> <h4 id="目录结构-2"><a href="#目录结构-2" aria-hidden="true" class="header-anchor">#</a> 目录结构</h4> <div class="language- extra-class"><pre class="language-text"><code>src
+├── main
+│   └── java
+│       └── com
+│           └── hzj
+│               ├── bean
+│               │   ├── Boss.java
+│               │   ├── Car.java
+│               │   └── Cat.java
+│               └── config
+│                   └── MainConfigOfAutowired.java
+└── test
+    └── java
+        └── com
+            └── hzj
+                └── test
+                    └── AutowiredTest.java
+
+</code></pre></div><ol><li><p>给<code>Car</code>类加上<code>@Component</code>注解，在<code>MainConfigOfAutowired</code>类中将bean包下类也自动扫描</p></li> <li><p>新建一个<code>Boss</code>类</p></li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Boss</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Car</span> car<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的无参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 在构造方法上使用@Autowired注解
+     * @param car
+     * @param cat
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">,</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的有参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> car<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCar</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的setCar方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Cat</span> <span class="token function">getCat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCat</span><span class="token punctuation">(</span><span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的setCat方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;Boss{&quot;</span> <span class="token operator">+</span>
+                <span class="token string">&quot;car=&quot;</span> <span class="token operator">+</span> car <span class="token operator">+</span>
+                <span class="token string">&quot;, cat=&quot;</span> <span class="token operator">+</span> cat <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="在方法上使用"><a href="#在方法上使用" aria-hidden="true" class="header-anchor">#</a> 在方法上使用</h3> <p>修改<code>Boss</code>类</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Boss</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Car</span> car<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">;</span>
+
+
+
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的无参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 在构造方法上使用@Autowired注解
+     * @param car
+     * @param cat
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">,</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的有参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+
+    <span class="token keyword">public</span> <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> car<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCar</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的setCar方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Cat</span> <span class="token function">getCat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCat</span><span class="token punctuation">(</span><span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的setCat方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;Boss{&quot;</span> <span class="token operator">+</span>
+                <span class="token string">&quot;car=&quot;</span> <span class="token operator">+</span> car <span class="token operator">+</span>
+                <span class="token string">&quot;, cat=&quot;</span> <span class="token operator">+</span> cat <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="tip custom-block"><p>在运行的时候发现先调用了Boss的无参构造方法，在调用了Boss的两个Set方法</p></div> <h3 id="在参数上使用"><a href="#在参数上使用" aria-hidden="true" class="header-anchor">#</a> 在参数上使用</h3> <p>不与<code>@Bean</code>一起使用，那么<code>@Autowride</code>注解只有在构造方法的参数上使用，并且有一定的限制</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Boss</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Car</span> car<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">;</span>
+
+
+
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的无参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 在构造方法上使用@Autowired注解
+     * @param car
+     * @param cat
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Car</span> car<span class="token punctuation">,</span> <span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的有参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> car<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCar</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的setCar方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Cat</span> <span class="token function">getCat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCat</span><span class="token punctuation">(</span><span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的setCat方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;Boss{&quot;</span> <span class="token operator">+</span>
+                <span class="token string">&quot;car=&quot;</span> <span class="token operator">+</span> car <span class="token operator">+</span>
+                <span class="token string">&quot;, cat=&quot;</span> <span class="token operator">+</span> cat <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><div class="tip custom-block"><p>运行测试类的时候发现调用的是Boss的无参构造方法，并没有调用个Boss的有参构造方法，所以并没有完成自动注入</p></div> <p>然后将代码做下简答的更改，删除无参构造方法，在添加一个只有一个参数的构造方法，发现直接报错</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Boss</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Car</span> car<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">;</span>
+
+
+
+<span class="token comment">//    public Boss() {</span>
+<span class="token comment">//        System.out.println(&quot;调用了Boss的无参构造方法&quot;);</span>
+<span class="token comment">//    }</span>
+
+
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 在构造方法上使用@Autowired注解
+     * @param car
+     * @param cat
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Car</span> car<span class="token punctuation">,</span> <span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的有参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//省略</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>在把新增的构造方法删除，发现程序正常运行了,而且调用了Boss的有参构造方法，并且把值注入进来了</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Boss</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Car</span> car<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">;</span>
+
+
+
+<span class="token comment">//    public Boss() {</span>
+<span class="token comment">//        System.out.println(&quot;调用了Boss的无参构造方法&quot;);</span>
+<span class="token comment">//    }</span>
+
+<span class="token comment">//</span>
+<span class="token comment">//    public Boss(Car car) {</span>
+<span class="token comment">//        this.car = car;</span>
+<span class="token comment">//        this.car = null;</span>
+<span class="token comment">//    }</span>
+
+    <span class="token comment">/**
+     * 在构造方法上使用@Autowired注解
+     * @param car
+     * @param cat
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Car</span> car<span class="token punctuation">,</span> <span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的有参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//省略</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>把<code>@Autowride</code>注解去掉，发现也可以正常运行</p> <div class="language-java extra-class"><pre class="language-java"><code>```java
+<span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Autowired</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Boss</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Car</span> car<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">;</span>
+
+
+
+<span class="token comment">//    public Boss() {</span>
+<span class="token comment">//        System.out.println(&quot;调用了Boss的无参构造方法&quot;);</span>
+<span class="token comment">//    }</span>
+
+<span class="token comment">//</span>
+<span class="token comment">//    public Boss(Car car) {</span>
+<span class="token comment">//        this.car = car;</span>
+<span class="token comment">//        this.car = null;</span>
+<span class="token comment">//    }</span>
+
+    <span class="token comment">/**
+     * 在构造方法上使用@Autowired注解
+     * @param car
+     * @param cat
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span><span class="token class-name">Car</span> car<span class="token punctuation">,</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;调用了Boss的有参构造方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>car <span class="token operator">=</span> car<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cat <span class="token operator">=</span> cat<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//省略</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="tip custom-block"><p>最终得出的结论就是如果运用在构造方法的参数上，那么构造方法只能有一个，不能重载,并且<code>@Autowride</code>还可以省略</p></div> <h2 id="与-bean配合使用"><a href="#与-bean配合使用" aria-hidden="true" class="header-anchor">#</a> 与<code>@Bean</code>配合使用</h2> <p>在<code>MainConfigOfAutowired</code>类下使用<code>@Bean</code></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">.</span><span class="token class-name">Boss</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">.</span><span class="token class-name">Car</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>bean</span><span class="token punctuation">.</span><span class="token class-name">Cat</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>hzj<span class="token punctuation">.</span>dao</span><span class="token punctuation">.</span><span class="token class-name">BookDao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Bean</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">ComponentScan</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Configuration</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Primary</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author hzj
+ */</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;com.hzj.service&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;com.hzj.dao&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;com.hzj.bean&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAutowired</span> <span class="token punctuation">{</span>
+
+
+    <span class="token comment">/**
+     * 通过@Primary设置Bean的优先级别
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Primary</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;bookDao2&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">BookDao</span> <span class="token function">bookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BookDao</span><span class="token punctuation">(</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">&quot;boss1&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Boss</span> <span class="token function">boss</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Car</span> car<span class="token punctuation">,</span><span class="token annotation punctuation">@Autowired</span> <span class="token class-name">Cat</span> cat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Boss</span><span class="token punctuation">(</span>car<span class="token punctuation">,</span> cat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><div class="tip custom-block"><p>与<code>@Bean</code>配合使用的时候，<code>@Autowride</code>也可以省略</p></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/hzjanger/SpringInActionStudy/edit/master/docs/annotation/autowired.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/SpringInActionStudy/annotation/Values.html" class="prev">@Value</a></span> <span class="next"><a href="/SpringInActionStudy/annotation/resource.html">@Resource</a>→
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/SpringInActionStudy/assets/js/app.c809567c.js" defer></script><script src="/SpringInActionStudy/assets/js/2.376d72c8.js" defer></script><script src="/SpringInActionStudy/assets/js/16.1e2a7fa9.js" defer></script>
+  </body>
+</html>
